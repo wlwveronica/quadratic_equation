@@ -1,0 +1,45 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Editor files
+*.swp
+*.swo
+*.bak
+*~
+
+# macOS
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+.ENV/
+*.env
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Test reports
+*.log
+*.tmp
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# System files
+Thumbs.db
+ehthumbs.db
+desktop.ini
