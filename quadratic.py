@@ -1,5 +1,5 @@
 import math
-import sys
+import argparse
 
 class QuadraticEquation:
     def __init__(self, a: float, b: float, c: float):
@@ -34,21 +34,27 @@ class QuadraticEquation:
         else:
             return "Dva reálné kořeny"
 
-# ------------------------------
-# Spuštění ze skriptu v terminálu
-# ------------------------------
-if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Použití: python3 rovnice.py <a> <b> <c>")
-        print("Například: python3 rovnice.py 1 -3 2")
-        sys.exit(1)
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Řešení kvadratické rovnice v oboru reálných čísel."
+    )
+    parser.add_argument("a", type=float, nargs='?', help="Koeficient a")
+    parser.add_argument("b", type=float, nargs='?', help="Koeficient b")
+    parser.add_argument("c", type=float, nargs='?', help="Koeficient c")
+    parser.add_argument(
+        "--version", action="version",
+        version="Řešení kvadratické rovnice 1.0\nAutor: Veronika Bernardová\nDatum: 2025-10-16"
+    )
+
+    args = parser.parse_args()
+
+    if args.a is None or args.b is None or args.c is None:
+        parser.print_help()
+        return
 
     try:
-        a = float(sys.argv[1])
-        b = float(sys.argv[2])
-        c = float(sys.argv[3])
-
-        equation = QuadraticEquation(a, b, c)
+        equation = QuadraticEquation(args.a, args.b, args.c)
         roots = equation.solve()
         category = equation.solution_category()
 
@@ -57,4 +63,7 @@ if __name__ == "__main__":
 
     except ValueError as e:
         print("Chyba:", e)
-        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
